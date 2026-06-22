@@ -2,8 +2,10 @@ package guru.springframework.spring6webapp.bootstrap;
 
 import guru.springframework.spring6webapp.domain.Author;
 import guru.springframework.spring6webapp.domain.Book;
+import guru.springframework.spring6webapp.domain.Publisher;
 import guru.springframework.spring6webapp.repositories.AuthorRepository;
 import guru.springframework.spring6webapp.repositories.BookRepository;
+import guru.springframework.spring6webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +25,13 @@ public class BootstrapData implements CommandLineRunner {
      */
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository,
+                         PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -65,5 +70,13 @@ public class BootstrapData implements CommandLineRunner {
         System.out.println("Author count: " + authorRepository.count());
         System.out.println("Book count: " + bookRepository.count());
 
+        Publisher penguin = new Publisher();
+        penguin.setPublisherName("Penguin");
+        penguin.setAddress("1562 Eastern");
+        penguin.setCity("Chicago");
+        penguin.setZip("12345");
+
+        Publisher penguinSaved = publisherRepository.save(penguin);
+        System.out.println("Publisher count: " + publisherRepository.count());
     }
 }
