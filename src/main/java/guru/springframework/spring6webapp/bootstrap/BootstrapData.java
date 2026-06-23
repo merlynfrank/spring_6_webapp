@@ -64,6 +64,13 @@ public class BootstrapData implements CommandLineRunner {
         ericSaved.getBooks().add(dddSaved);
         rodSaved.getBooks().add(noEJBSaved);
 
+        //Build Book to author association/relationship
+        // for this to reflect in the join table
+        // both sides of the assoc is necessary
+
+        ddd.getAuthors().add(ericSaved);
+        noEJBSaved.getAuthors().add(rodSaved);
+
         Publisher penguin = new Publisher();
         penguin.setPublisherName("Penguin");
         penguin.setAddress("1562 Eastern");
