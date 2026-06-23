@@ -1,4 +1,4 @@
-package guru.springframework.spring6webapp.domain;
+package guru.springframework.spring6webapp.controllers;
 
 import guru.springframework.spring6webapp.services.BookService;
 import org.springframework.stereotype.Controller;
